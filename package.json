@@ -1,0 +1,17 @@
+{
+  "name": "teste_05",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:pub":"node Publisher/index.js",
+    "start:sub":"node Subscribe/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^4.24.3",
+    "ioredis": "^5.3.2"
+  }
+}
