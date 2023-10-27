@@ -16,4 +16,5 @@ const listenQueue = async ({ redis }) => {
   });
 };
 
-const redis = getRedisServices()(async () => listenQueue({ redis }))();
+const redis = getRedisServices();
+(async () => listenQueue({ redis }))();
