@@ -3,23 +3,15 @@ const { EMAIL_QUEUE, getRedisServices } = require("../Common/index");
 
 const buildMessage = (body) => JSON.stringify(body);
 
-const formatDate = (date) => {
-  const dia = String(date.getDate()).padStart(2, "0");
-  const mes = String(date.getMonth() + 1).padStart(2, "0");
-  const ano = date.getFullYear();
-
-  const dateFormat = `${dia}/${mes}/${ano}`;
-
-  return dateFormat;
-};
-
 const sendMessageToQueue = async ({ message, user, queue, redis }) => {
-  const data = formatDate(new Date());
+  const Time = new Date();
+  const timeFormat =
+    Time.getHours() + ":" + Time.getMinutes() + ":" + Time.getSeconds();
 
   const MessageFormat = {
     message: message,
     user: user,
-    data: data,
+    data: timeFormat,
   };
   await redis.publish(queue, buildMessage(MessageFormat));
   // Caso queira ver a mensagem publicada
